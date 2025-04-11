@@ -5,19 +5,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.sarvika.demo.model.User;
-import com.sarvika.demo.service.UserService;
+import com.sarvika.demo.service.impl.UserServiceImpl;
+
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/users")
 public class UserController {
 
-    private final UserService userService;
-
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+    private final UserServiceImpl userService;
 
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
